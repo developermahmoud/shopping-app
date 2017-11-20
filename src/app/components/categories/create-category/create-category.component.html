@@ -1,0 +1,13 @@
+<div *ngIf="showSuccess" class="alert alert-success">
+	Category Successfully Created.
+</div>
+<form #createCategory="ngForm" (ngSubmit)="store(createCategory)">
+	<div class="form-group">
+		<label>Category Name</label>
+		<input class="form-control" name="name" [(ngModel)]="category.name" #name="ngModel" required/>
+		<div class="alert alert-danger" *ngIf="name.touched && !name.valid">
+			Category name required!
+		</div>
+	</div>
+	<button [disabled]="!createCategory.form.valid || disableBtn" class="btn btn-success">Save</button>
+</form>
